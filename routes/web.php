@@ -18,11 +18,61 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/tags', function() {
 
+
+    $tags = \App\Models\Tag::with('posts')->get();
+
+    return view('tags.index', compact('tags'));
+
+});
 
 Route::get('/posts',function() {
 
-    $posts = \App\Models\Post::get();
+
+    // $tag = \App\Models\Tag::first();
+
+    // $post = \App\Models\Post::with('tags')->first();
+
+    // dd($post);
+    // $post->tags()->attach($tag);
+
+
+    // \App\Models\Tag::create([
+    //     'name'  =>  'Tag1'
+    // ]);
+    // \App\Models\Tag::create([
+    //     'name'  =>  'Tag2'
+    // ]);
+    // \App\Models\Tag::create([
+    //     'name'  =>  'Tag3'
+    // ]);
+    // \App\Models\Tag::create([
+    //     'name'  =>  'Tag4'
+    // ]);
+    // \App\Models\Tag::create([
+    //     'name'  =>  'Tag5'
+    // ]);
+    // \App\Models\Tag::create([
+    //     'name'  =>  'Tag6'
+    // ]);
+    // \App\Models\Tag::create([
+    //     'name'  =>  'Tag7'
+    // ]);
+    // \App\Models\Tag::create([
+    //     'name'  =>  'Tag8'
+    // ]);
+    // \App\Models\Tag::create([
+    //     'name'  =>  'Tag9'
+    // ]);
+    // \App\Models\Tag::create([
+    //     'name'  =>  'Tag10'
+    // ]);
+    // \App\Models\Tag::create([
+    //     'name'  =>  'Tag11'
+    // ]);
+
+    $posts = \App\Models\Post::with(['user','tags'])->get();
 
     // echo "<pre>";
     // print_r($posts);
